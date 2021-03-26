@@ -1,49 +1,77 @@
-# Phaser 3 Webpack Project Template
+<h1 align="center">Phaser Whack a mole game</h1>
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
 
-This has been updated for Phaser 3.50.0 version and above.
+<div align="center">
+  <h3>
+    <a href="https://{your-demo-link.your-domain}">
+      Demo project link
+    </a> 
+  </h3>
+</div>
 
-Loading images via JavaScript module `import` is also supported, although not recommended.
+<!-- TABLE OF CONTENTS -->
 
-## Requirements
+## Table of Contents
 
-[Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
+- [Overview](#overview)
+  - [Built With](#built-with)
+- [Features](#features)
+- [Contact me](#contact)
+- [Acknowledgements](#acknowledgements)
 
-## Available Commands
+<!-- OVERVIEW -->
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
-| `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
+## Overview
 
-## Writing Code
+![whack-Amole-Epic](https://user-images.githubusercontent.com/40355510/112674526-18027a00-8e77-11eb-945f-c29ee1058066.png)
 
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm start`.
+- Where can I see your demo?
+    [demo link]()
 
-After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server (available at `http://localhost:8080` by default).
+- What was your experience?
+ exciting
 
-## Customizing the Template
+  - Adjective describing my Experience
+exciting
+- What have you learned/improved?
+  - one
+  - two
 
-### Babel
+### Built With
+<!-- what the project was built using -->
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [Phaser.js](https://phaser.io)
 
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
 
- ```
-"browsers": [
-  ">0.25%",
-  "not ie 11",
-  "not op_mini all"
-]
- ```
+## Features
 
-### Webpack
+<!-- List the features of your application -->
 
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
+The application completes the given user stories.
+You can click  to play
 
-## Deploying Code
 
-After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
 
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
+## How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/charleskyalo/whack-a-mole.git
+
+
+```
+
+## Acknowledgements
+
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
+
+- [codeacademys mole uneather](https://codeacademy.com)
+
+## Contact
+
+
+- GitHub [@charleskyalo](https://github.com/charleskyalo)
+- Twitter [@kyarleschalo](https://twitter.com/kyarleschalo)
