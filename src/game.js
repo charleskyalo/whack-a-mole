@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 import StartScene from './scenes/StartScene';
+import GameScene from './scenes/GameScene';
+import EndScene from './scenes/EndScene';
 const config = {
   type: Phaser.AUTO,
   width: 480,
@@ -8,7 +10,7 @@ const config = {
     default: 'arcade',
   },
   backgroundColor: 'F8B392',
-  scene: [StartScene]
+  scene: [StartScene, GameScene, EndScene]
 
 }
 
