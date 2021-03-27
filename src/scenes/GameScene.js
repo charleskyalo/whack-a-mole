@@ -302,22 +302,161 @@ class GameScene extends Phaser.Scene {
   }
 
 
+  // create mole from the sprite sheet that was loaded.
+
+  initializeMole() {
+    gameState.mole = this.physics.add.sprite(0, 0, 'mole');
+    gameState.mole.setScale(0.5, 0.5);
+
+
+    // set moles location in thee burrow
+    this.updateBurrow();
 
 
 
+    // after mole appears ,run idle animation
+    gameState.mole.on('animationcomplete-appear', () => {
+      gameState.mole.anims.play('idle')
+    })
+
+    // after the mole is hidden , immeaditely relocate to another burrow
+    gameState.mole.on('animationcomplete-disappear', () => {
+      this.updateBurrow();
+    })
+  }
 
 
+  // creates all the animations that will run after an action is perfomed
+
+  initializeAnimations() {
+    // create the appear animation from mole spritesheet
+    this.anims.create({
+      key: 'appear',
+      frames: this.anims.generateFrameNumbers('mole', {
+        start: 0,
+        end: 2
+      }),
+      frameRate: 10
+    })
+
+    // create the idle animation from mole spritesheet that will repeat indefinately
+    this.anims.create({
+      key: 'idle',
+      frames: this.anims.generateFrameNumbers('mole', {
+        frames: [
+          1, 3, 1, 1, 4]
+      }),
+      frameRate: 3,
+      repeat: -1,
+    });
+
+    // create the disappear animation from mole spritesheet
+
+    this.anims.create({
+      key: 'disappear',
+      frames: this.anims.generateFrameNumbers('mole', {
+        frames: [5, 6, 6, 5, 2, 1, 0]
+      }),
+      frameRate: 15,
+    })
+  }
 
 
+  // display remaining  time on the screen  and run update after every second
+
+  initializeTimer(timerCallback) {
+    gameState.timerText = this.add.text(50, 75, `Time :${timeLeft}`)
+      .setColor('#000000');
+
+    this.time.addEvent({
+      delay: 1000, //update time after every 1000,
+      callback: timerCallback,
+      args: [1],
+      callbackScope: this,
+      lopp: true,
+    })
+  }
 
 
+  // fetch a random burrow from a list of burrows;
+  getRandomBurrow() {
+    return Phaser.Utils.Array.GetRandom(this.burrowLocations);
+  }
+
+  // select a burrow and move a move to it
+  updateBurrow() {
+    // select a random burrow from a list of burrows
+    const burrowLocation = this.getRandomBurrow();
+
+    // update the current burrow key to the new burrows key
+    currentBurrowKey = burrowLocation.key;
+
+    // set the moles position to the new borrow`s (x,y) coordinates
+    gameState.mole.setPosition(burrowLocation.x, burrowLocation.y);
+
+    // play animation to make  a mole appear 
+    gameState.mole.anims.play('appear');
+  }
+
+  // play the disppear animation   to indicate it was hit and after animation is complete,mole will move to a new burrow
+  relocateMole() {
+    gameState.mole.anims.play('disappear');
+  }
+
+  // update the score text on  the screen to reflect the changed amount
+  updateTimerText() {
+    gameState.timerText.setText(`Time: ${timeLeft}`);
+  }
+
+  // update the score text on the screen to reflect the changed amount
+  updateScoreText() {
+    gameState.scoreText.setText(`Score: ${score}`);
+  }
+
+  // display  the number of points the user gained
+  displayRewardText() {
+    // add text to display score reward
+    const rewardText = this.add.text(160, 50, '+5')
+      .setColor("#228B22");
+    this.time.addEvent({
+      delay: 300,  // call after 300ms
+      callback: () => {
+        rewardText.destroy();
+      },
+      args: [rewardText], //text to remove
+      repeat: -1
+    })
+  }
+
+  // display the number of points the user lost
+  displayPenaltyText() {
+    // add text to display score penalty
+    const penaltyText = this.add.text(160, 50, '-5')
+      .setColor('#991A00');
+    this.time.addEvent({
+      delay: 300, //call after 300
+      callback: () => { penaltyText.destroy(); },
+      args: [penaltyText],//text to remove
+      repeat: -1
+    })
+  }
 
 
+  displayPauseScreen() {
+    gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xffffff);
+    gameState.pauseOverlay.aplha = 0.75;
+    gameState.pauseOverlay.setOrigin(0, 0);
+    gameState.pauseText = this.add.text(225, 325, 'PAUSED').setColor('#000000');
+    gameState.resumeText = this.add.text(125, 375, 'press space to resume game').setColor('#000000');
+  }
 
+  // remove pause gamescreen wnen the game is unpaused
+  removePauseScreen() {
+    gameState.pauseOverlay.destroy();
+    gameState.pauseText.destroy();
+    gameState.resumeText.destroy();
+  }
 
 }
-
-
-
 
 export default GameScene;
