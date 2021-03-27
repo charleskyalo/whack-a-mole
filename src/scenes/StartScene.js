@@ -15,8 +15,8 @@ class StartScene extends Phaser.Scene {
     background.setOrigin(0).setScale(0.5);
 
     this.input.on("pointerup", () => {
-      /*   this.scene.start('GameScene');
-        this.scene.stop('StartScene'); */
+      this.scene.start('GameScene');
+      this.scene.stop('StartScene');
     })
   }
 }
