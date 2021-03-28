@@ -1,9 +1,6 @@
 import Phaser from 'phaser';
 
-
-
-
-let timeLeft = 10;
+let timeLeft = 5;
 // game score;
 let score = 0;
 // initial game state with  not paused state;
@@ -16,7 +13,7 @@ let currentBurrowKey;
 const gameState = {}
 
 
-class GameScene extends Phaser.Scene {
+ class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: 'GameScene' })
 
@@ -151,17 +148,15 @@ class GameScene extends Phaser.Scene {
     if (timeLeft <= 0) {
       // stop this scene and start the end scene ;
       /* add other levels later */
-
-      /*
       this.scene.stop('GameScene');
-      this.Scene.start('EndScene');
-      */
+      this.scene.start('EndScene');
 
-      // update users score
-      const updateScore = (points) => {
-        score += points;
-      }
     }
+    // update users score
+    const updateScore = (points) => {
+      score += points;
+    }
+
 
     // user hits the correct mole reward; +5 points 
 
@@ -181,7 +176,7 @@ class GameScene extends Phaser.Scene {
       this.displayPenaltyText();
       updateScore(-5);
       // display the new score to the user
-      this.updatedScoreText();
+      this.updateScoreText();
     }
 
 
@@ -203,36 +198,35 @@ class GameScene extends Phaser.Scene {
       if (Phaser.Input.Keyboard.JustDown(gameState.jkey)) {
         onBurrowHit('j');
       }
-      else if (Phaser.Input.Keyboard.JustDown(gameState.kKey)) {
+      else if (Phaser.Input.Keyboard.JustDown(gameState.kkey)) {
 
         onBurrowHit('k');
-      } else if (Phaser.Input.Keyboard.JustDown(gameState.lKey)) {
+      } else if (Phaser.Input.Keyboard.JustDown(gameState.lkey)) {
         onBurrowHit('l');
       }
 
-      else if (Phaser.Input.Keyboard.JustDown(gameState.qKey)) {
+      else if (Phaser.Input.Keyboard.JustDown(gameState.qkey)) {
         onBurrowHit('q');
       }
-      else if (Phaser.Input.Keyboard.JustDown(gameState.rKey)) {
+      else if (Phaser.Input.Keyboard.JustDown(gameState.rkey)) {
         onBurrowHit('r');
-      } else if (Phaser.Input.Keyboard.JustDown(gameState.hKey)) {
+      } else if (Phaser.Input.Keyboard.JustDown(gameState.hkey)) {
         onBurrowHit('h');
       }
 
-      else if (Phaser.Input.Keyboard.JustDown(gameState.aKey)) {
+      else if (Phaser.Input.Keyboard.JustDown(gameState.akey)) {
         onBurrowHit('a');
-      } else if (Phaser.Input.Keyboard.JustDown(gameState.mKey)) {
+      } else if (Phaser.Input.Keyboard.JustDown(gameState.mkey)) {
         onBurrowHit('m');
-      } else if (Phaser.Input.Keyboard.JustDown(gameState.cKey)) {
+      } else if (Phaser.Input.Keyboard.JustDown(gameState.ckey)) {
         onBurrowHit('c');
       }
-      else if (Phaser.Input.Keyboard.JustDown(gameState.zKey)) {
+      else if (Phaser.Input.Keyboard.JustDown(gameState.zkey)) {
         onBurrowHit('z');
-      } else if (Phaser.Input.Keyboard.JustDown(gameState.rKey)) {
+      } else if (Phaser.Input.Keyboard.JustDown(gameState.rkey)) {
         onBurrowHit('r');
       }
-      else if (Phaser.Input.Keyboard.JustDown(gameState.vKey)) {
-        // 	// USER ACTIVITY: Call the key handler
+      else if (Phaser.Input.Keyboard.JustDown(gameState.vkey)) {
         onBurrowHit('v');
       }
     }
@@ -271,8 +265,8 @@ class GameScene extends Phaser.Scene {
 
   // display users score  on the screen
   initializeScoreText() {
-    gameState.scoreText = this.add.text(50, 50, `Score: ${score}`);
-    setColor('#000000');
+    gameState.scoreText = this.add.text(50, 50, `Score: ${score}`)
+      .setColor('#000000');
   }
 
   // loop through the burrow and set up event listeners on the corresponding skin
@@ -282,13 +276,13 @@ class GameScene extends Phaser.Scene {
     gameState.lkey = this.input.keyboard.addKey('l');
     gameState.qkey = this.input.keyboard.addKey('q');
     gameState.rkey = this.input.keyboard.addKey('r');
-    gameState.hKey = this.input.keyboard.addKey('h');
-    gameState.aKey = this.input.keyboard.addKey('a');
-    gameState.mKey = this.input.keyboard.addKey('m');
-    gameState.cKey = this.input.keyboard.addKey('c');
+    gameState.hkey = this.input.keyboard.addKey('h');
+    gameState.akey = this.input.keyboard.addKey('a');
+    gameState.mkey = this.input.keyboard.addKey('m');
+    gameState.ckey = this.input.keyboard.addKey('c');
     gameState.zkey = this.input.keyboard.addKey('z');
-    gameState.rKey = this.input.keyboard.addKey('r');
-    gameState.vKey = this.input.keyboard.addKey('v');
+    gameState.rkey = this.input.keyboard.addKey('r');
+    gameState.vkey = this.input.keyboard.addKey('v');
     gameState.spaceKey = this.input.keyboard.addKey('space')
 
 
@@ -373,7 +367,7 @@ class GameScene extends Phaser.Scene {
       callback: timerCallback,
       args: [1],
       callbackScope: this,
-      lopp: true,
+      loop: true,
     })
   }
 
@@ -443,10 +437,10 @@ class GameScene extends Phaser.Scene {
 
 
   displayPauseScreen() {
-    gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xffffff);
+    gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xF2913D);
     gameState.pauseOverlay.aplha = 0.75;
     gameState.pauseOverlay.setOrigin(0, 0);
-    gameState.pauseText = this.add.text(225, 325, 'PAUSED').setColor('#000000');
+    gameState.pauseText = this.add.text(210, 325, ' GAME PAUSED').setColor('#000000');
     gameState.resumeText = this.add.text(125, 375, 'press space to resume game').setColor('#000000');
   }
 
@@ -459,4 +453,8 @@ class GameScene extends Phaser.Scene {
 
 }
 
-export default GameScene;
+
+export {
+  GameScene,
+  score
+}
