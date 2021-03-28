@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-let timeLeft = 5;
+let timeLeft = 30;
 // game score;
 let score = 0;
 // initial game state with  not paused state;
@@ -13,7 +13,7 @@ let currentBurrowKey;
 const gameState = {}
 
 
- class GameScene extends Phaser.Scene {
+class GameScene extends Phaser.Scene {
   constructor() {
     super({ key: 'GameScene' })
 
@@ -121,6 +121,8 @@ const gameState = {}
     //display background
     this.initializeBackground();
 
+    // show instructions
+    this.showInstructions();
 
     // initial score text;
     this.initializeScoreText();
@@ -267,6 +269,9 @@ const gameState = {}
   initializeScoreText() {
     gameState.scoreText = this.add.text(50, 50, `Score: ${score}`)
       .setColor('#000000');
+  }
+  showInstructions() {
+    gameState.instructions = this.add.text(50, 100, "Hit the keyboard key where you see a mole").setColor('#73280D');
   }
 
   // loop through the burrow and set up event listeners on the corresponding skin
