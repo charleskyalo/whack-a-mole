@@ -6,7 +6,6 @@ class EndScene extends Phaser.Scene {
   }
 
 
-
   preload() {
     this.load.image('EndScreen', '../assets/game-0ver01.png ');
   }
@@ -17,11 +16,11 @@ class EndScene extends Phaser.Scene {
     background.setOrigin(0);
     background.setScale(0.5);
 
-    this.input.on('pointerup', () => {
-      this.scene.stop('EndScene');
-      this.scene.start('StartScene');
-    })
-    this.add.text(20, 300, `Your score is ${score}.`).setColor('#fff').setFontSize(40);
+    // this.input.on('pointerup', () => {
+    //   this.scene.stop('EndScene');
+    //   this.scene.start('GameScene');
+    // })
+    this.add.text(20, 300, `Your score is ${score}.\n   reload page to `).setColor('#fff').setFontSize(40);
   }
 
 }
