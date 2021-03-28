@@ -1,7 +1,10 @@
 import Phaser from "phaser";
 import StartScene from './scenes/StartScene';
-import GameScene from './scenes/GameScene';
+import { GameScene } from './scenes/GameScene';
 import EndScene from './scenes/EndScene';
+
+
+
 const config = {
   type: Phaser.AUTO,
   width: 480,
@@ -15,3 +18,4 @@ const config = {
 }
 
 const game = new Phaser.Game(config);
+
