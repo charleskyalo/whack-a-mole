@@ -26,10 +26,19 @@
 ![whack-Amole-Epic](https://user-images.githubusercontent.com/40355510/112674526-18027a00-8e77-11eb-945f-c29ee1058066.png)
 
 - Where can I see your demo?
-    [demo link]()
+    [demo link](https://{your-demo-link.your-domain})
 
 - What was your experience?
- exciting
+ tough
+
+ ## todos
+ bugs to fix 
+
+ [ ] errors thrown while deploying the site to netlify
+ [ ] provide a demo link of the project 
+ [ ] manage the game state properly
+
+
 
   - Adjective describing my Experience
 exciting
