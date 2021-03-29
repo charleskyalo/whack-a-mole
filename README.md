@@ -77,7 +77,7 @@ You can play whack a mole using your laptops keyboard
 
 
 
-## How to USE
+## How to use
 
 [Play the game](https://whaack-mole.netlify.app)
 
