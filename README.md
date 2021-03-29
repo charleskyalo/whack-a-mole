@@ -3,8 +3,8 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
-      Demo project link
+    <a href="https://whaack-mole.netlify.app">
+      Whack a mole
     </a> 
   </h3>
 </div>
