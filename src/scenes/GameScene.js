@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 
 let timeLeft = 30;
 // game score;
@@ -233,21 +232,23 @@ class GameScene extends Phaser.Scene {
       }
     }
 
-    const togglePause = () => {
-      if (isPaused === true) {
-        isPaused = false;
-        this.removePauseScreen();
-      } else {
-        isPaused = true;
-        this.displayPauseScreen();
-      }
-    };
 
     // pause scene using space bar
     if (Phaser.Input.Keyboard.JustDown(gameState.spaceKey)) {
-      togglePause();
+      this.togglePause("GAME PAUSED");
     }
   }
+
+  togglePause(text) {
+    if (isPaused === true) {
+      isPaused = false;
+      this.removePauseScreen();
+    } else {
+      isPaused = true;
+      this.displayPauseScreen(text);
+    }
+  };
+
 
   // custom methods
 
@@ -271,7 +272,12 @@ class GameScene extends Phaser.Scene {
       .setColor('#000000');
   }
   showInstructions() {
-    gameState.instructions = this.add.text(50, 100, "Hit the keyboard key where you see a mole").setColor('#73280D');
+    gameState.instructions = this.add.text(350, 50, "help❓").setColor('#73280D').setFontSize(25);
+    gameState.instructions.setInteractive();
+    gameState.instructions.on("pointerup", () => {
+      this.togglePause("GAME INSTRUCTIONS");
+    })
+
   }
 
   // loop through the burrow and set up event listeners on the corresponding skin
@@ -441,12 +447,20 @@ class GameScene extends Phaser.Scene {
   }
 
 
-  displayPauseScreen() {
-    gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xF2913D);
-    gameState.pauseOverlay.aplha = 0.75;
+  displayPauseScreen(text) {
+    gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xFFFFFF);
+    gameState.pauseOverlay.alpha = 0.75;
     gameState.pauseOverlay.setOrigin(0, 0);
-    gameState.pauseText = this.add.text(210, 325, ' GAME PAUSED').setColor('#000000');
-    gameState.resumeText = this.add.text(125, 375, 'press space to resume game').setColor('#000000');
+
+    gameState.pauseText = this.add.text(195, 325, `${text}`).setColor('#000000');
+    gameState.resumeText = this.add.text(125, 375, `
+    The GAME HAS BEEN 
+          PAUSED\n
+    ***INSTRUCTIONS***\n
+  Hit the keyboard key \n
+where you see a mole appear.\n 
+press SPACEBAR to resume game
+    `).setColor('#000000');
   }
 
   // remove pause gamescreen wnen the game is unpaused
@@ -459,7 +473,3 @@ class GameScene extends Phaser.Scene {
 }
 
 
-export {
-  GameScene,
-  score
-}
