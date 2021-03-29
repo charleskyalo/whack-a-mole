@@ -232,21 +232,23 @@ class GameScene extends Phaser.Scene {
       }
     }
 
-    const togglePause = () => {
-      if (isPaused === true) {
-        isPaused = false;
-        this.removePauseScreen();
-      } else {
-        isPaused = true;
-        this.displayPauseScreen();
-      }
-    };
 
     // pause scene using space bar
     if (Phaser.Input.Keyboard.JustDown(gameState.spaceKey)) {
-      togglePause();
+      this.togglePause("GAME PAUSED");
     }
   }
+
+  togglePause(text) {
+    if (isPaused === true) {
+      isPaused = false;
+      this.removePauseScreen();
+    } else {
+      isPaused = true;
+      this.displayPauseScreen(text);
+    }
+  };
+
 
   // custom methods
 
@@ -271,7 +273,10 @@ class GameScene extends Phaser.Scene {
   }
   showInstructions() {
     gameState.instructions = this.add.text(350, 50, "help❓").setColor('#73280D').setFontSize(25);
-
+    gameState.instructions.setInteractive();
+    gameState.instructions.on("pointerup", () => {
+      this.togglePause("GAME INSTRUCTIONS");
+    })
 
   }
 
@@ -442,13 +447,20 @@ class GameScene extends Phaser.Scene {
   }
 
 
-  displayPauseScreen() {
+  displayPauseScreen(text) {
     gameState.pauseOverlay = this.add.rectangle(0, 0, 480, 640, 0xFFFFFF);
     gameState.pauseOverlay.alpha = 0.75;
     gameState.pauseOverlay.setOrigin(0, 0);
 
-    gameState.pauseText = this.add.text(210, 325, ' GAME PAUSED').setColor('#000000');
-    gameState.resumeText = this.add.text(125, 375, 'press space to resume game').setColor('#000000');
+    gameState.pauseText = this.add.text(195, 325, `${text}`).setColor('#000000');
+    gameState.resumeText = this.add.text(125, 375, `
+    The GAME HAS BEEN 
+          PAUSED\n
+    ***INSTRUCTIONS***\n
+  Hit the keyboard key \n
+where you see a mole appear.\n 
+press SPACEBAR to resume game
+    `).setColor('#000000');
   }
 
   // remove pause gamescreen wnen the game is unpaused
