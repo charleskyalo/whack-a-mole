@@ -25,27 +25,41 @@
 
 ![whack-Amole-Epic](https://user-images.githubusercontent.com/40355510/112674526-18027a00-8e77-11eb-945f-c29ee1058066.png)
 
-- Where can I see your demo?
-    [demo link](https://{your-demo-link.your-domain})
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c8b8124b-3a44-457a-a4eb-58e53ef363e1/deploy-status)](https://app.netlify.com/sites/whaack-mole/deploys)
 
-- What was your experience?
- tough
+- Where can I see your demo?
+    [whaack-mole](https://whaack-mole.netlify.app/)
+
+- What was your experience? 
+ <b>tough and full of fun and learning </b> 
+
+
+ ### First created the project with  webpack ("am  learning how to bundle the code together using it")
+
+ ### I realized was kinda batling with the tool(webpack ) it taking time away from the actual project.
+
+ ### The build which I was hosting with netlify could not run.
+ state management issues with the game scoring started arising
+ 
+### what next ?
+tldr: created an mvp instead
+
+ I created a branch without webpack ( I removed node_modules package json  files and grabbed the minified phaser js lib instead)
+ Am planning to finish the game concept first and worry about  webpack later.
 
  ## todos
  bugs to fix 
 
- [ ] errors thrown while deploying the site to netlify
- [ ] provide a demo link of the project 
- [ ] manage the game state properly
+ [  ] errors thrown while deploying the site to netlify
+ [ x ] provide a demo link of the project 
+ [ x ] manage the game state properly
 
 
 
-  - Adjective describing my Experience
-exciting
-- What have you learned/improved?
-  - one
-  - two
-
+ Adjectives describing my Experience
+- Exciting
+- Stimulating
+- Thrilling
 ### Built With
 <!-- what the project was built using -->
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -58,18 +72,14 @@ exciting
 <!-- List the features of your application -->
 
 The application completes the given user stories.
-You can click  to play
+
+You can play whack a mole using your laptops keyboard
 
 
 
-## How To Use
+## How to USE
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-
-```bash
-# Clone this repository
-$ git clone https://github.com/charleskyalo/whack-a-mole.git
-
+[Play the game](https://whaack-mole.netlify.app)
 
 ```
 
