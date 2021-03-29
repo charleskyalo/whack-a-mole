@@ -1,5 +1,3 @@
-import Phaser from 'phaser';
-import { score } from './GameScene'
 class EndScene extends Phaser.Scene {
   constructor() {
     super({ key: 'EndScene' })
@@ -16,17 +14,18 @@ class EndScene extends Phaser.Scene {
     background.setOrigin(0);
     background.setScale(0.5);
 
-    // this.input.on('pointerup', () => {
-    //   this.scene.stop('EndScene');
-    //   this.scene.start('GameScene');
-    // })
-    this.add.text(20, 300, `Your score is ${score}.\n   reload page to `).setColor('#fff').setFontSize(40);
+    this.input.on('pointerup', () => {
+      score = 0;
+      timeLeft = 30;
+      isPaused = false;
+      this.scene.start('GameScene');
+      this.scene.stop('EndScene');
+    })
+    this.add.text(20, 300, `Your score is ${score} \n  thank you 😊  \n   for playing`).setColor('#fff').setFontSize(40);
   }
 
 }
 
-
-export default EndScene;
 
 
 
