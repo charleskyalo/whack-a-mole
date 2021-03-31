@@ -13,7 +13,7 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
+<!-- - [Overview](#overview) -->
   - [Built With](#built-with)
 - [Features](#features)
 - [Contact me](#contact)
@@ -81,7 +81,6 @@ You can play whack a mole using your laptops keyboard
 
 [Play the game](https://whaack-mole.netlify.app)
 
-```
 
 ## Acknowledgements
 
