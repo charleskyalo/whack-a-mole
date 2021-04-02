@@ -7,7 +7,7 @@ const config = {
     default: 'arcade',
   },
   backgroundColor: 'F8B392',
-  scene: [PreloadScene, StartScene, GameScene, EndScene]
+  scene: [PreloadScene, StartScene, GameScene, GameSceneTwo, EndScene]
 
 }
 
