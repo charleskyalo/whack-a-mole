@@ -15,13 +15,10 @@ class EndScene extends Phaser.Scene {
     background.setScale(0.5);
 
     this.input.on('pointerup', () => {
-      score = 0;
-      timeLeft = 30;
-      isPaused = false;
-      this.scene.start('GameScene');
+      this.scene.start('StartScene');
       this.scene.stop('EndScene');
     })
-    this.add.text(20, 300, `Your score is ${score} \n  thank you 😊  \n   for playing`).setColor('#fff').setFontSize(40);
+    this.add.text(20, 300, `Your score is ${score + Score} \n  thank you 😊  \n   for playing`).setColor('#fff').setFontSize(40);
   }
 
 }
