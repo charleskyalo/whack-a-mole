@@ -261,7 +261,7 @@ class GameScene extends Phaser.Scene {
 
 
     // create a score box and timer
-    const scoreBox = this.add.rectangle(90, 70, 140, 90, 0xFFFFFF);
+    const scoreBox = this.add.rectangle(90, 70, 150, 90, 0xFFFFFF);
     scoreBox.alpha = 0.5;
 
   }
@@ -269,7 +269,9 @@ class GameScene extends Phaser.Scene {
   // display users score  on the screen
   initializeScoreText() {
     gameState.scoreText = this.add.text(50, 50, `Score: ${score}`)
-      .setColor('#000000');
+      .setColor('#000000').setFontSize(20);
+    // show game level 
+    gameState.level = this.add.text(200, 50, `Level 1`).setColor('#000000').setFontSize(25);
   }
   showInstructions() {
     gameState.instructions = this.add.text(350, 50, "help❓").setColor('#73280D').setFontSize(25);
@@ -371,7 +373,7 @@ class GameScene extends Phaser.Scene {
 
   initializeTimer(timerCallback) {
     gameState.timerText = this.add.text(50, 75, `Time :${timeLeft}`)
-      .setColor('#000000');
+      .setColor('#000000').setFontSize(20);
 
     this.time.addEvent({
       delay: 1000, //update time after every 1000,
@@ -422,7 +424,7 @@ class GameScene extends Phaser.Scene {
   displayRewardText() {
     // add text to display score reward
     const rewardText = this.add.text(160, 50, '+5')
-      .setColor("#228B22");
+      .setColor("#228B22").setFontSize(30);
     this.time.addEvent({
       delay: 300,  // call after 300ms
       callback: () => {
@@ -437,7 +439,7 @@ class GameScene extends Phaser.Scene {
   displayPenaltyText() {
     // add text to display score penalty
     const penaltyText = this.add.text(160, 50, '-5')
-      .setColor('#991A00');
+      .setColor('#991A00').setFontSize(30);
     this.time.addEvent({
       delay: 300, //call after 300
       callback: () => { penaltyText.destroy(); },
