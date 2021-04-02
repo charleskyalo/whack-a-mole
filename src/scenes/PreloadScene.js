@@ -24,7 +24,7 @@ class PreloadScene extends Phaser.Scene {
     this.load.image('background', '../../assets/whack-amole-epic.png')
 
     let assets = ['game-0ver01.png ', 'whack-amole-epic.png',
-      'mole-sprite-all.png', 'whack-amole-rainbow.png'];
+      'mole-sprite-all.png', 'whack-amole-rainbow.png','whack-amole-level-2.png'];
     for (let i = 0; i < assets.length; i++) {
       this.load.image(assets[i], `../../assets/${assets[i]}`)
     }
